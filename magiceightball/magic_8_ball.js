@@ -51,7 +51,7 @@ document.write(`
 	}
 </style>
 <div class=centerText>
-<h1 class=elegantshadow>${userQuestion}? </h1>
+<p class=elegantshadow>${userQuestion}? </p>
 <h1 class=elegantshadow40>Magic Eight Ball says:</h1>
 <a href=http://www.tom5egan.com/magiceightball><img src=eightball.jpg height="400" width="400"alt="8ball"></img></a>
 <h1>${eightBall}.</h1>
