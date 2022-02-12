@@ -45,7 +45,17 @@ break;
 
 //this writes the code to the body 
 document.write(`
-<br><br><br><br><br><br><h1>${userQuestion}? </h1><br> <h2>Magic Eight Ball says:</h2><h2><br> ${eightBall}.</h2>
+<style>
+.centerText{
+	text-align:center;
+	}
+</style>
+<div class=centerText>
+<h1 class=elegantshadow>${userQuestion}? </h1>
+<h1 class=elegantshadow40>Magic Eight Ball says:</h1>
+<a href=http://10.0.0.130/magiceightball><img src=eightball.jpg height="400" width="400"alt="8ball"></img></a>
+<h1>${eightBall}.</h1>
+</div>
 
 
 
