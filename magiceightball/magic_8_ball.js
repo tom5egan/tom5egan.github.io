@@ -56,5 +56,5 @@ document.write(`
 <a href=http://tom5egan.com/magiceightball><img src=eightball.jpg height="400" width="400"alt="8ball"></img></a>
 	<div class=elegantshadownopad>${eightBall}.</div>
 </div>
-
+//wtf
 `);
