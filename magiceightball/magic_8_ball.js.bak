@@ -53,7 +53,7 @@ document.write(`
 <div class=centerText>
 <h1 class=elegantshadow>${userQuestion}? </h1>
 <h1 class=elegantshadow40>Magic Eight Ball says:</h1>
-<a href=http://10.0.0.130/magiceightball><img src=eightball.jpg height="400" width="400"alt="8ball"></img></a>
+<a href=http://tom5egan.com/magiceightball><img src=eightball.jpg height="400" width="400"alt="8ball"></img></a>
 <h1>${eightBall}.</h1>
 </div>
 

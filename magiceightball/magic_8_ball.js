@@ -57,7 +57,4 @@ document.write(`
 <h1>${eightBall}.</h1>
 </div>
 
-
-
-
 `);
