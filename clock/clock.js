@@ -29,7 +29,7 @@ function updateDate ( )
   //gets the system time from the machine running the webpage
   var currentMonth = new Date().getMonth ( )+1;
   var currentDay = new Date().getDate ( );
-  var currentYear = new Date().getFullYear ( );
+  var currentYear = new Date().getFullYear ( )- 2000;
   
     // Compose the string for display
   var currentDateString = currentMonth + "/" + currentDay + "/" + currentYear;
