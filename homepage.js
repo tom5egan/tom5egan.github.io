@@ -3,7 +3,7 @@
 function pictureReload(){
     let randomNumber = Math.floor(Math.random() *22);
     
-    activePicture= `${randomNumber}.jpg`;   
+    activePicture= `${randomNumber}.png`;   
 
 //this writes the code to the body 
 document.write (`
