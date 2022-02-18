@@ -20,6 +20,6 @@ document.write (`
 //document.getElementById("clock").firstChild.nodeValue = activePicture;
 setTimeout(function(){
 	location.reload();
-},5000); // 5000 milliseconds means 5 seconds.
+},7000); // 7000 milliseconds means 5 seconds.
 };
 pictureReload();
