@@ -14,7 +14,7 @@ document.write (`
 </style>
 <div id="picture" class=centerText>
 	
-<img src=horizontal/${activePicture} alt="My Work" ></img></a>
+<img src=${activePicture} alt="My Work" ></img></a>
 </div>
 `)
 //document.getElementById("clock").firstChild.nodeValue = activePicture;
