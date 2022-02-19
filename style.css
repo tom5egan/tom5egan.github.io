@@ -39,3 +39,22 @@ div.retroshadow {
   letter-spacing: 0.05em;
   text-shadow: 4px 4px 0px #d5d5d5, 7px 7px 0px rgba(0, 0, 0, 0.2);
 }
+.iframe {
+  border-style: double;
+  border-width:5px;
+  border-color: rgba(66, 63, 63, 0.007);
+  border-radius: 25%;
+  text-align:top;
+}
+h1{
+  
+  font-family:'Shadows Into Light';
+  ;
+}
+.heading{
+  font-family:monospace;
+}   
+.main{
+  font-family:'Ledger';
+  padding: 0px 10px 20px 10px
+}
