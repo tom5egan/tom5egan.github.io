@@ -8,7 +8,48 @@
             <meta name="viewport" content="width=device-width, intial-scale=1.0">
             <document.body.style.zoom="50%">
             <link rel="stylesheet" href="stylesheet.css" type="text/css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+            <style>
+                h3{
+                font-family: 'Lobster', cursive;
+                font-family: 'Shadows Into Light', cursive;  
+                margin: 0% 10% 0% 10% ;
+                padding:0%;
+                }
+                .dropbtn {
+                    background-color: rgb(205, 58, 58);
+                    color: rgb(249, 243, 243);
+                    padding: 16px;
+                    font-size: 16px;
+                    border: none;
+                }
 
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: rgb(227, 100, 100);
+                    min-width: 200px;
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    color: rgb(255, 253, 253);
+                    padding: 6px 8px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown-content a:hover {background-color: white;}
+                .dropdown:hover .dropdown-content {display: block;}
+                .dropdown:hover .dropbtn {background-color: grey;}
+            </style>
     </head>
     <body>
 
@@ -19,7 +60,7 @@
         </iframe>
           
            
-            <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Studio Tuner Air signals </h3>
+            <h3>Studio Tuner Air signals </h3>
 
         <div>
             <Center>
@@ -37,7 +78,7 @@
             </center>
 
             <p>
-                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Main Transmitter Air signals </h3>
+                <h3>Main Transmitter Air signals </h3>
 
             </p>
         </div>
@@ -59,6 +100,15 @@
 
     </body>
     <footer>
-       
+        <div class="dropdown">
+            <button class="dropbtn">RDS and PSD</button>
+                <div class="dropdown-content">
+                    <a href="http://10.102.50.34/public/mapshow.htm?id=2088&mapid=390F6A51-E240-4211-B581-8CBEDE0A739F" target="_blank">WKSC</a>
+                    <a href="http://10.102.50.34/public/mapshow.htm?id=2086&mapid=636A3B19-F966-41D1-B7E2-46CECE50EA5E" target="_blank">WCHI</a>
+                    <a href="http://10.102.50.34/public/mapshow.htm?id=2087&mapid=9173B455-0735-4851-8E30-0F4859B5F274" target="_blank">WLIT</a>
+                    <a href="http://10.102.50.34/public/mapshow.htm?id=2090&mapid=4AA0CF3F-6C28-4097-9D1F-78CEAF0E796E" target="_blank">WVAZ</a>
+                    <a href="http://10.102.50.34/public/mapshow.htm?id=2089&mapid=A61F28BB-1C7F-43B3-8B70-54FE0E5FF71A" target="_blank">WGCI</a>
+                </div>
+        </div>    
     </footer>
 </html>
