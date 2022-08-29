@@ -1,7 +1,7 @@
 //random number generator that will assign picture address
 //let activePicture=""
 function pictureReload(){
-    let randomNumber = Math.floor(Math.random() *22);
+    let randomNumber = Math.floor(Math.random() *26);
     
     activePicture= `${randomNumber}.png`;   
 
