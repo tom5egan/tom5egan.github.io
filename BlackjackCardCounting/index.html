@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack Pro - Card Counting Mentor</title>
+    <title>Finnegan Blackjack - Pro Mentor</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #0f0f0f;
+            background: #0a0a0a;
             color: white;
             text-align: center;
             margin: 0;
             overflow-x: hidden;
         }
 
+        /* --- Header & Stats --- */
         .header {
             background: #000;
             padding: 15px;
@@ -33,11 +34,11 @@
         }
 
         .heat-container {
-            width: 120px;
-            height: 20px;
-            background: #333;
+            width: 140px;
+            height: 18px;
+            background: #222;
             border-radius: 10px;
-            border: 1px solid #555;
+            border: 1px solid #444;
             overflow: hidden;
             position: relative;
         }
@@ -46,28 +47,18 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(to right, #fb8500, #ff0000);
-            transition: 0.5s;
+            transition: 0.8s ease-in-out;
         }
 
-        .heat-label {
-            font-size: 0.7rem;
-            color: white;
-            position: absolute;
-            width: 100%;
-            top: 2px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px black;
-        }
-
+        /* --- Counting Panel --- */
         .counter-panel {
-            background: #1a1a1a;
-            padding: 10px;
-            font-size: 0.8rem;
+            background: #151515;
+            padding: 12px;
+            font-size: 0.85rem;
             border-bottom: 1px solid #333;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
@@ -76,161 +67,114 @@
             font-weight: bold;
         }
 
-        .history-box {
-            display: flex;
-            gap: 5px;
-            background: #000;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            min-width: 150px;
-            justify-content: center;
-        }
-
-        .hist-card {
-            font-size: 0.8rem;
-            padding: 2px 4px;
-            border-radius: 3px;
-            background: white;
-            color: black;
-            font-weight: bold;
-        }
-
-        .coach-container {
-            margin: 10px auto;
-            width: 90%;
-            max-width: 600px;
-        }
-
-        #coach-panel {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid #00d4ff;
-            padding: 15px;
-            border-radius: 10px;
-            color: #00d4ff;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            min-height: 60px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mentor-tag {
-            color: #d4af37;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-        }
-
+        /* --- The Table (With Finnegan Logo) --- */
         .table {
-            background: radial-gradient(#146338, #0a3a1f);
+            background: radial-gradient(circle, #1a4a2e 0%, #0d2b1a 100%);
             border: 12px solid #3d2516;
-            border-radius: 100px;
-            width: 95%;
-            max-width: 750px;
-            min-height: 400px;
-            margin: 10px auto;
-            padding: 20px;
+            border-radius: 150px;
+            width: 90%;
+            max-width: 850px;
+            min-height: 450px;
+            margin: 20px auto;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 40px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
         }
 
+            /* The Logo Watermark */
+            .table::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px; /* Adjust size as needed */
+                height: 300px;
+                background: url('IMG_5067.PNG') no-repeat center;
+                background-size: contain;
+                opacity: 0.90; /* Subtle watermark look */
+                pointer-events: none;
+            }
+
+        /* --- Cards & UI --- */
         .hand-area {
             position: relative;
-            padding: 10px;
-            border-radius: 15px;
+            z-index: 2;
         }
 
         .cards {
             display: flex;
             justify-content: center;
             min-height: 110px;
-            flex-wrap: wrap;
-            margin-top: 5px;
+            margin-top: 10px;
         }
 
         .card {
-            width: 60px;
-            height: 90px;
+            width: 65px;
+            height: 95px;
             background: white;
             color: black;
             border-radius: 6px;
-            margin: 5px;
+            margin: 0 5px;
             font-weight: bold;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border: 1px solid #999;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            font-size: 1.2rem;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+            font-size: 1.3rem;
         }
 
         .score-box {
-            background: rgba(0,0,0,0.6);
-            padding: 4px 12px;
-            border-radius: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.8rem;
             border: 1px solid #d4af37;
             display: inline-block;
         }
 
+        /* --- Controls --- */
         .controls {
-            margin-bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-row {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
+            padding-bottom: 40px;
         }
 
         button {
-            padding: 12px 18px;
+            padding: 12px 24px;
             font-weight: bold;
             border-radius: 50px;
             border: none;
             cursor: pointer;
             text-transform: uppercase;
-            box-shadow: 0 4px #000;
-            transition: 0.1s;
+            transition: 0.2s;
+            margin: 5px;
         }
-
-            button:active {
-                transform: translateY(2px);
-                box-shadow: 0 2px #000;
-            }
-
-            button:disabled {
-                opacity: 0.2;
-                filter: grayscale(1);
-                cursor: not-allowed;
-            }
 
         #deal-btn {
             background: #d4af37;
             color: #000;
-            width: 220px;
+            width: 200px;
         }
 
-        .bet-btn {
-            background: #444;
-            color: white;
-            border: 1px solid #d4af37;
-        }
+            #deal-btn:disabled {
+                opacity: 0.3;
+            }
 
         .hot-bet {
             background: #00ff00 !important;
-            box-shadow: 0 0 20px #00ff00 !important;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        #coach-panel {
+            max-width: 500px;
+            margin: 10px auto;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid #00d4ff;
+            padding: 15px;
+            border-radius: 8px;
+            color: #00d4ff;
         }
     </style>
 </head>
@@ -238,11 +182,9 @@
 
     <div class="header">
         <div>BANK: <span id="bank" class="stat">$1000</span></div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:5px;">
-            <div class="heat-container">
-                <div id="heat-bar"></div>
-                <div class="heat-label">DEALER HEAT</div>
-            </div>
+        <div style="text-align:center">
+            <div style="font-size: 0.6rem; margin-bottom: 3px;">PIT BOSS ATTENTION</div>
+            <div class="heat-container"><div id="heat-bar"></div></div>
         </div>
         <div>STREAK: <span id="streak" class="stat">0</span></div>
     </div>
@@ -250,15 +192,13 @@
     <div class="counter-panel">
         <div>RUNNING: <span id="run-count" class="count-val">0</span></div>
         <div>TRUE: <span id="true-count" class="count-val">0</span></div>
-        <div class="history-box" id="history-box"></div>
+        <div>DECKS LEFT: <span id="deck-val" class="count-val">6.0</span></div>
         <div>BIAS: <span id="bias-text" class="count-val">Neutral</span></div>
     </div>
 
-    <div class="coach-container">
-        <div id="coach-panel">
-            <span class="mentor-tag">Mentor</span>
-            <div id="advice-text">Place a bet to begin the count.</div>
-        </div>
+    <div id="coach-panel">
+        <small style="color:#d4af37; display:block; margin-bottom:5px;">FINNEGAN MENTOR</small>
+        <div id="advice-text">Wait for the shuffle or place a bet to begin.</div>
     </div>
 
     <div class="table">
@@ -274,63 +214,48 @@
 
     <div class="controls">
         <div id="bet-ui">
-            <div class="btn-row">
-                <button class="bet-btn" onclick="addBet(50)">+$50</button>
-                <button class="bet-btn" onclick="addBet(100)">+$100</button>
-                <button onclick="clearBet()" style="background:#222; color:white;">Clear</button>
-            </div>
+            <button onclick="addBet(50)" style="background:#333; color:white; border:1px solid #d4af37;">+$50</button>
+            <button onclick="addBet(100)" style="background:#333; color:white; border:1px solid #d4af37;">+$100</button>
+            <button onclick="clearBet()" style="background:transparent; color:#888;">Clear</button>
             <br>
             <button id="deal-btn" onclick="startGame()" disabled>Deal Hand</button>
         </div>
         <div id="play-ui" style="display:none">
-            <div class="btn-row">
-                <button onclick="hit()" style="background:#e63946; color:white;">Hit</button>
-                <button onclick="stand()" style="background:#457b9d; color:white;">Stand</button>
-                <button id="double-btn" onclick="doubleDown()" style="background:#fb8500; color:white;">Double</button>
-            </div>
+            <button onclick="hit()" style="background:#e63946; color:white;">Hit</button>
+            <button onclick="stand()" style="background:#457b9d; color:white;">Stand</button>
+            <button id="double-btn" onclick="doubleDown()" style="background:#fb8500; color:white;">Double</button>
         </div>
-        <button onclick="shuffleDeck()" style="font-size:0.7rem; background:transparent; border:1px solid #333; color:#555; margin-top:10px;">Emergency Reshuffle</button>
+        <button onclick="shuffleDeck()" style="font-size:0.6rem; background:none; color:#444; border:1px solid #222; margin-top:20px;">Emergency Reshuffle</button>
     </div>
 
     <script>let bank = 1000, currentBet = 0, deck = [], dHand = [], pHand = [];
         let streak = 0, runningCount = 0, dealerHeat = 0, handActive = false;
-        let cardHistory = [];
+        const DECK_COUNT = 6;
 
         function shuffleDeck() {
             const suites = ['♠', '♣', '♥', '♦'], vals = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
             deck = [];
-            for (let s of suites) for (let v of vals) deck.push({ s: s, v: v });
+            for (let i = 0; i < DECK_COUNT; i++) {
+                for (let s of suites) for (let v of vals) deck.push({ s: s, v: v });
+            }
             deck.sort(() => Math.random() - 0.5);
             runningCount = 0;
-            cardHistory = [];
-            document.getElementById('advice-text').innerText = "Fresh deck. Keep your eyes on the low cards.";
+            dealerHeat = Math.max(0, dealerHeat - 20);
             updateUI(true);
         }
 
-        function addBet(n) {
-            if (bank >= n) {
-                bank -= n;
-                currentBet += n;
-                updateUI();
-            }
-        }
-
-        function clearBet() {
-            bank += currentBet;
-            currentBet = 0;
-            updateUI();
-        }
+        function addBet(n) { if (bank >= n) { bank -= n; currentBet += n; updateUI(); } }
+        function clearBet() { bank += currentBet; currentBet = 0; updateUI(); }
 
         function updateCount(card) {
+            if (!card) return;
             if (['2', '3', '4', '5', '6'].includes(card.v)) runningCount++;
             else if (['10', 'J', 'Q', 'K', 'A'].includes(card.v)) runningCount--;
-            cardHistory.unshift(card);
-            if (cardHistory.length > 5) cardHistory.pop();
         }
 
         function getTrueCount() {
-            let decksRemaining = Math.max(0.5, deck.length / 52);
-            return (runningCount / decksRemaining).toFixed(1);
+            let rem = Math.max(0.5, deck.length / 52);
+            return (runningCount / rem).toFixed(1);
         }
 
         function getScore(hand) {
@@ -344,63 +269,41 @@
             return s;
         }
 
-        function getAdvice() {
-            let tc = parseFloat(getTrueCount());
-            if (tc >= 2) return `True Count is ${tc}. The high-card density is increasing. This is your best time to bet high.`;
-            if (tc <= -2) return `True Count is ${tc}. The small cards favor the dealer's ability to hit on 12-16. Tread carefully.`;
-            return "The deck is neutral. Watch for the 2s-6s to come out; that's what raises your edge.";
-        }
-
         function startGame() {
             if (currentBet <= 0) return;
-            if (deck.length < 10) shuffleDeck();
+            if (deck.length < 52) shuffleDeck();
 
             pHand = [deck.pop(), deck.pop()];
             dHand = [deck.pop(), deck.pop()];
 
             updateCount(pHand[0]); updateCount(pHand[1]); updateCount(dHand[0]);
 
+            // Heat Logic
+            if (parseFloat(getTrueCount()) > 2 && currentBet > 150) dealerHeat += 15;
+
             document.getElementById('bet-ui').style.display = 'none';
             document.getElementById('play-ui').style.display = 'block';
             handActive = true;
+            updateUI();
 
             if (getScore(pHand) === 21) {
                 updateCount(dHand[1]);
-                if (getScore(dHand) === 21) { bank += currentBet; endHand("Push: Both have Blackjack"); }
-                else { bank += currentBet * 2.5; streak++; endHand("Blackjack! (The math was on your side)"); }
-                return;
+                setTimeout(() => endHand(getScore(dHand) === 21 ? "Push" : "Blackjack!"), 600);
             }
-            updateUI();
         }
 
         function hit() {
-            let card = deck.pop();
-            updateCount(card);
-            pHand.push(card);
-            if (getScore(pHand) > 21) { updateCount(dHand[1]); streak = 0; endHand("Bust!"); }
+            let c = deck.pop(); updateCount(c); pHand.push(c);
+            if (getScore(pHand) > 21) { updateCount(dHand[1]); endHand("Bust!"); }
             else updateUI();
-        }
-
-        function doubleDown() {
-            if (bank < currentBet) return;
-            bank -= currentBet;
-            currentBet *= 2;
-            let card = deck.pop();
-            updateCount(card);
-            pHand.push(card);
-            stand();
         }
 
         function stand() {
             updateCount(dHand[1]);
-            while (getScore(dHand) < 17) {
-                let card = deck.pop();
-                updateCount(card);
-                dHand.push(card);
-            }
+            while (getScore(dHand) < 17) { let c = deck.pop(); updateCount(c); dHand.push(c); }
             let ps = getScore(pHand), ds = getScore(dHand);
             if (ds > 21 || ps > ds) { bank += currentBet * 2; streak++; endHand("Winner!"); }
-            else if (ps < ds) { streak = 0; endHand("Dealer takes it."); }
+            else if (ps < ds) { streak = 0; endHand("Dealer wins."); }
             else { bank += currentBet; endHand("Push."); }
         }
 
@@ -409,41 +312,36 @@
             document.getElementById('advice-text').innerText = msg;
             document.getElementById('bet-ui').style.display = 'block';
             document.getElementById('play-ui').style.display = 'none';
+            if (dealerHeat >= 100) { alert("Pit boss is watching too closely. Deck shuffled."); dealerHeat = 0; shuffleDeck(); }
             currentBet = 0;
             updateUI(true);
         }
 
-        function updateUI(showDealer = false) {
+        function updateUI(showD = false) {
             document.getElementById('bank').innerText = "$" + bank;
             document.getElementById('streak').innerText = streak;
             document.getElementById('bet-display').innerText = "$" + currentBet;
             document.getElementById('run-count').innerText = runningCount;
             document.getElementById('true-count').innerText = getTrueCount();
+            document.getElementById('deck-val').innerText = (deck.length / 52).toFixed(1);
             document.getElementById('heat-bar').style.width = dealerHeat + "%";
 
             let tc = parseFloat(getTrueCount());
-            document.getElementById('bias-text').innerText = tc > 1.5 ? "🔥 Hot" : (tc < -1.5 ? "❄️ Cold" : "Neutral");
-
-            document.getElementById('history-box').innerHTML = cardHistory.map(c =>
-                `<span class="hist-card" style="color:${(c.s == '♥' || c.s == '♦') ? 'red' : 'black'}">${c.v}${c.s}</span>`
-            ).join('');
-
-            if (handActive) document.getElementById('advice-text').innerText = getAdvice();
+            document.getElementById('bias-text').innerText = tc >= 2 ? "🔥 Hot" : (tc <= -2 ? "❄️ Cold" : "Neutral");
+            document.getElementById('deal-btn').className = (tc >= 2 && !handActive) ? "hot-bet" : "";
+            document.getElementById('deal-btn').disabled = (currentBet === 0);
 
             const draw = c => `<div class="card" style="color:${(c.s == '♥' || c.s == '♦') ? 'red' : 'black'}">${c.v}<div>${c.s}</div></div>`;
             document.getElementById('player-cards').innerHTML = pHand.map(draw).join('');
             document.getElementById('p-score').innerText = getScore(pHand);
 
-            if (showDealer) {
+            if (showD) {
                 document.getElementById('dealer-cards').innerHTML = dHand.map(draw).join('');
                 document.getElementById('d-score').innerText = getScore(dHand);
             } else {
-                document.getElementById('dealer-cards').innerHTML = dHand.length ? draw(dHand[0]) + '<div class="card" style="background:#222; border:1px solid #d4af37;"></div>' : '';
+                document.getElementById('dealer-cards').innerHTML = dHand.length ? draw(dHand[0]) + '<div class="card" style="background:#111; border:1px solid #333;"></div>' : '';
                 document.getElementById('d-score').innerText = "?";
             }
-
-            document.getElementById('deal-btn').disabled = (currentBet === 0);
-            document.getElementById('deal-btn').className = (tc >= 2 && !handActive) ? "hot-bet" : "";
         }
 
         shuffleDeck();</script>
