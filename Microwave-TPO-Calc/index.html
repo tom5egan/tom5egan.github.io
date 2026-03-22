@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Microwave TPO Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f7f9;
+            padding: 30px;
+        }
+
+        .calc-card {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1a365d;
+            border-bottom: 2px solid #3182ce;
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ebf8ff;
+            border-left: 5px solid #3182ce;
+            border-radius: 4px;
+        }
+
+        .val {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c5282;
+        }
+    </style>
+</head>
+<body>
+    <div class="calc-card">
+        <h2>Microwave TPO Calculator</h2>
+        <div class="input-group">
+            <label>Licensed EIRP (dBm)</label>
+            <input type="number" id="eirp" value="60" step="0.1" oninput="calcTPO()">
+        </div>
+        <div class="input-group">
+            <label>Antenna Gain (dBi)</label>
+            <input type="number" id="gain" value="2.15" step="0.01" oninput="calcTPO()">
+        </div>
+        <div class="input-group">
+            <label>Total Insertion Loss (dB)</label>
+            <input type="number" id="loss" value="1.5" step="0.1" oninput="calcTPO()">
+        </div>
+
+        <div class="results">
+            <div>TPO (dBm): <span id="tpoDbm" class="val">--</span> dBm</div>
+            <div style="margin-top:10px;">TPO (W): <span id="tpoWatts" class="val">--</span> Watts</div>
+        </div>
+
+        <p style="font-size: 0.8em; color: #718096; margin-top: 15px;">
+            Formula: TPO(dBm) = EIRP (dBm) - Gain (dBi) + Loss (dB)
+        </p>
+        <p style="font-size: 0.8em; color: #718096; margin-top: 15px;">
+            P<sub>(W)</sub> = 10<sup>(P<sub>(dBm)</sub> - 30) / 10</sup>
+        </p>
+    </div>
+
+    <script>function calcTPO() {
+            const eirp = parseFloat(document.getElementById('eirp').value);
+            const gain = parseFloat(document.getElementById('gain').value);
+            const loss = parseFloat(document.getElementById('loss').value);
+
+            if (!isNaN(eirp) && !isNaN(gain) && !isNaN(loss)) {
+                const tpoDbm = eirp - gain + loss;
+                const tpoWatts = Math.pow(10, (tpoDbm - 30) / 10);
+
+                document.getElementById('tpoDbm').innerText = tpoDbm.toFixed(2);
+                document.getElementById('tpoWatts').innerText = tpoWatts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        }
+        calcTPO();</script>
+</body>
+</html>
